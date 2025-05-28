@@ -23,17 +23,6 @@ A real-time cryptocurrency statistics tracking and monitoring service that provi
 - MongoDB
 - NATS Server
 
-## Environment Variables
-
-Create a `.env` file in the root directory with the following variables:
-
-```env
-PORT=3000
-MONGODB_URI=mongodb://localhost:27017/crypto-stats
-NATS_URL=nats://localhost:4222
-NATS_SUBJECT=crypto.update
-```
-
 ## Installation
 
 1. Clone the repository:
