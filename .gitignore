@@ -10,8 +10,8 @@ yarn-error.log
 .env.*.local
 
 # IDE
-.idea/
 .vscode/
+.idea/
 *.swp
 *.swo
 

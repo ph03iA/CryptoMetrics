@@ -1,30 +1,21 @@
-# KoinX Backend Internship Assignment
+# CryptoStats
 
-A distributed system for collecting and analyzing cryptocurrency data in real-time.
-
-## Project Structure
-
-The project consists of two main components:
-
-1. **API Server** (`/api-server`)
-   - REST API service
-   - Collects cryptocurrency data from CoinGecko
-   - Provides data analysis endpoints
-   - Stores data in MongoDB
-
-2. **Worker Server** (`/worker-server`)
-   - Background service
-   - Publishes update events every 15 minutes
-   - Uses NATS for event publishing
+A real-time cryptocurrency statistics tracking and monitoring service that provides price, market cap, and 24-hour change data for various cryptocurrencies.
 
 ## Features
 
-- Real-time cryptocurrency data collection
-- Automated data updates every 15 minutes
-- Price and market cap tracking
-- Price deviation analysis
-- Event-driven architecture
-- Scalable design
+- Real-time cryptocurrency price tracking
+- Market cap monitoring
+- 24-hour price change tracking
+- Price deviation calculations
+- NATS integration for real-time updates
+- RESTful API endpoints
+
+## Supported Cryptocurrencies
+
+- Bitcoin (BTC)
+- Ethereum (ETH)
+- Matic Network (MATIC)
 
 ## Prerequisites
 
@@ -32,63 +23,57 @@ The project consists of two main components:
 - MongoDB
 - NATS Server
 
-## Setup Instructions
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/ph03iA/KoinX---Backend-Internship-Take-home-Assignment.git
-   cd KoinX---Backend-Internship-Take-home-Assignment
-   ```
-
-2. Set up the API Server:
-   ```bash
-   cd api-server
-   npm install
-   # Create .env file with required environment variables
-   npm start
-   ```
-
-3. Set up the Worker Server:
-   ```bash
-   cd worker-server
-   npm install
-   # Create .env file with required environment variables
-   npm start
-   ```
-
 ## Environment Variables
 
-### API Server (.env)
-```
-PORT=3000
-MONGODB_URI=your_mongodb_connection_string
-```
+Create a `.env` file in the root directory with the following variables:
 
-### Worker Server (.env)
-```
+```env
+PORT=3000
+MONGODB_URI=mongodb://localhost:27017/crypto-stats
 NATS_URL=nats://localhost:4222
 NATS_SUBJECT=crypto.update
 ```
 
+## Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/cryptostats.git
+cd cryptostats
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the server:
+```bash
+npm start
+```
+
 ## API Endpoints
 
-### GET /stats
-Get latest cryptocurrency statistics.
+### Get Latest Stats
+```
+GET /stats?coin=<coin_name>
+```
+Returns the latest price, market cap, and 24-hour change for the specified cryptocurrency.
 
-### GET /deviation
-Get price deviation analysis.
+### Get Price Deviation
+```
+GET /deviation?coin=<coin_name>
+```
+Returns the standard deviation of the last 100 price points for the specified cryptocurrency.
 
-For detailed API documentation, see the API server README.
+## Contributing
 
-## Technologies Used
-
-- Node.js
-- Express.js
-- MongoDB
-- NATS
-- CoinGecko API
-- Docker (optional)
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## License
 
-This project is part of the KoinX Backend Internship Assignment. 
+This project is licensed under the MIT License - see the LICENSE file for details. 

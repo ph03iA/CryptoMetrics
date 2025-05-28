@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: koinx-api-server
+    env: node
+    buildCommand: cd api-server && npm install
+    startCommand: cd api-server && npm start
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: MONGODB_URI
+        sync: false
+      - key: NODE_ENV
+        value: production
+
+  - type: worker
+    name: koinx-worker-server
+    env: node
+    buildCommand: cd worker-server && npm install
+    startCommand: cd worker-server && npm start
+    envVars:
+      - key: NATS_URL
+        value: nats://localhost:4222
+      - key: NATS_SUBJECT
+        value: crypto.update
+      - key: NODE_ENV
+        value: production 
